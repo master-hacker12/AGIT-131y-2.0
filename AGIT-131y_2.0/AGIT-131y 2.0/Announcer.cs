@@ -96,5 +96,6 @@ namespace AGIT_131y_2._0
             public static string path = "Sound\\Шаблоны\\Билеты.wav";
         }
         public static int timeout_default = 5200;
+        public static int timeout_default2 = 9000;
     }
 }

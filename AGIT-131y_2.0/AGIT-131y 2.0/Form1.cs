@@ -22,7 +22,6 @@ namespace AGIT_131y_2._0
         }
         [DllImport("User32.dll")]
         internal static extern short GetAsyncKeyState(int vkey);
-      
         public static StreamReader routers = null;
         public static StreamReader stops = null;
         public static string rout = " ";
@@ -32,12 +31,14 @@ namespace AGIT_131y_2._0
         public static string[] files = null;
         SoundPlayer SP = null;
         public static char key = ' ';
+        bool bg = false;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             label1.Text = null;
             label2.Text = null;
             label3.Text = null;
+            textBox1.BackColor = Color.DimGray;
             textBox2.BackColor = Color.DimGray;
             textBox3.BackColor = Color.DimGray;
             button1.Text = "1";
@@ -48,6 +49,7 @@ namespace AGIT_131y_2._0
             button3.Enabled = false;
             label6.Text = " ";
             Active();
+          
 
 
         }
@@ -176,12 +178,16 @@ namespace AGIT_131y_2._0
             label3.Text = stop;
             files = new string[1];
             files[0] = stop;
+            bg = false; 
             Play_sound();
         }
         public void Play_sound()
         {
             if (files.Length == 1)
             {
+            
+                if (bg)
+                    textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
                 string st;
                 try
                 {
@@ -194,21 +200,27 @@ namespace AGIT_131y_2._0
                         st = "Sound\\" + label1.Text + "\\" + files[0] + ".wav";
                     }
                     SP = new SoundPlayer(st);
+                 
 
                     SP.Play();
-
+                    if (bg)
+                        Thread.Sleep(Announcer.timeout_default2);
                 }
                 catch (Exception ex)
                 {
                     SP.Stop();
                 }
 
+                textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
             }
             else
             {
 
                 for (int i = 0; i < files.Length; i++)
                 {
+
+                    textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
+
 
                     if (files[i] == "ОДЗ")
                     {
@@ -226,7 +238,8 @@ namespace AGIT_131y_2._0
                         //}
                         SP = new SoundPlayer(Announcer.End.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.End.timeout);
+                      
+                            Thread.Sleep(Announcer.End.timeout);
                         continue;
                     }
                     if (files[i] == "Напоминаем")
@@ -234,7 +247,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Remember.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Remember.timeout);
+                      
+                            Thread.Sleep(Announcer.Remember.timeout);
                         continue;
                     }
                     if (files[i] == "Начало движения")
@@ -242,7 +256,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Start_moution.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Start_moution.timeout);
+                    
+                            Thread.Sleep(Announcer.Start_moution.timeout);
                         continue;
                     }
                     if (files[i] == "Оплатив проезд")
@@ -250,7 +265,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Pay.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Pay.timeout);
+                       
+                            Thread.Sleep(Announcer.Pay.timeout);
                         continue;
                     }
                     if (files[i] == "Напоминаем")
@@ -258,7 +274,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Remember.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Remember.timeout);
+                      
+                            Thread.Sleep(Announcer.Remember.timeout);
                         continue;
                     }
                     if (files[i] == "Кнопка на поручне")
@@ -266,7 +283,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Button.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Button.timeout);
+                       
+                            Thread.Sleep(Announcer.Button.timeout);
                         continue;
                     }
                     if (files[i] == "Остановка на выход")
@@ -274,7 +292,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Stop_on_out.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Stop_on_out.timeout);
+                      
+                            Thread.Sleep(Announcer.Stop_on_out.timeout);
                         continue;
                     }
                     if (files[i] == "Перед выходом")
@@ -282,7 +301,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Before_out.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Before_out.timeout);
+                     
+                            Thread.Sleep(Announcer.Before_out.timeout);
                         continue;
                     }
                     if (files[i] == "Посадка закончена")
@@ -290,7 +310,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Entry_out.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Entry_out.timeout);
+                     
+                            Thread.Sleep(Announcer.Entry_out.timeout);
                         continue;
                     }
                     if (files[i] == "Проезжая часть")
@@ -298,7 +319,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Route_part.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Route_part.timeout);
+                    
+                            Thread.Sleep(Announcer.Route_part.timeout);
                         continue;
                     }
                     if (files[i] == "Только для высадки")
@@ -315,7 +337,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Give_in.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Give_in.timeout);
+                        
+                            Thread.Sleep(Announcer.Give_in.timeout);
                         continue;
                     }
                     if (files[i] == "Штраф")
@@ -323,7 +346,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Shtraf.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Shtraf.timeout);
+                      
+                            Thread.Sleep(Announcer.Shtraf.timeout);
                         continue;
                     }
                     if (files[i] == "Реклама")
@@ -331,7 +355,8 @@ namespace AGIT_131y_2._0
 
                         SP = new SoundPlayer(Announcer.Ad.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Ad.timeout);
+                     
+                            Thread.Sleep(Announcer.Ad.timeout);
                         continue;
                     }
                     if (files[i] == "Следует до")
@@ -345,14 +370,16 @@ namespace AGIT_131y_2._0
                     {
                         SP = new SoundPlayer(Announcer.Out.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Out.timeout);
+                    
+                            Thread.Sleep(Announcer.Out.timeout);
                         continue;
                     }
                     if (files[i] == "Билеты")
                     {
                         SP = new SoundPlayer(Announcer.Tickets.path);
                         SP.Play();
-                        Thread.Sleep(Announcer.Tickets.timeout);
+                 
+                            Thread.Sleep(Announcer.Tickets.timeout);
                         continue;
                     }
                     else
@@ -363,20 +390,24 @@ namespace AGIT_131y_2._0
                             string p = "Sound\\" + label1.Text + "\\" + files[i] + ".wav";
                             SP = new SoundPlayer(p);
                             SP.Play();
-                            Thread.Sleep(Announcer.timeout_default);
+                        
+                                Thread.Sleep(Announcer.timeout_default);
+
                         
                         }
                         catch (Exception e)
                         {
-                            Thread.Sleep(Announcer.timeout_default);
+                          
+                                Thread.Sleep(Announcer.timeout_default);
                             continue;
                         }
 
                     }
                 }
 
-                //  textBox1.BackColor = Color.DimGray;
+                
             }
+            textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
             SP = null;
         }
 
@@ -398,6 +429,8 @@ namespace AGIT_131y_2._0
 
             if ((key1 != 0) && (button1.Enabled))
             {
+                if (SP!=null)
+                SP.Stop();
                 key = '*';
                 button1_Click(sender, e);
             }
@@ -419,7 +452,7 @@ namespace AGIT_131y_2._0
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            bg = true;
             button1.Text = "Воспроизвести";
             button2.Text = "Сменить маршрут";
             button3.Text = "В конец маршрута";
