@@ -185,9 +185,11 @@ namespace AGIT_131y_2._0
         {
             if (files.Length == 1)
             {
-            
+
                 if (bg)
                     textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
+                   
+                
                 string st;
                 try
                 {
@@ -218,7 +220,7 @@ namespace AGIT_131y_2._0
 
                 for (int i = 0; i < files.Length; i++)
                 {
-
+                    button1.Invoke(new Action(() => button1.Enabled = false));
                     textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
 
 
@@ -407,6 +409,7 @@ namespace AGIT_131y_2._0
 
                 
             }
+            button1.Invoke(new Action(() => button1.Enabled = true));
             textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
             SP = null;
         }
@@ -444,6 +447,8 @@ namespace AGIT_131y_2._0
             }
             if ((key4 != 0) && (button3.Enabled))
             {
+                if (SP != null)
+                    SP.Stop();
                 key = '+';
                 button1_Click(sender, e);
             }
@@ -557,7 +562,7 @@ namespace AGIT_131y_2._0
                 }
                 key = ' ';
                 //Play_sound();
-
+           
             }
 
         }
