@@ -32,6 +32,7 @@ namespace AGIT_131y_2._0
         SoundPlayer SP = null;
         public static char key = ' ';
         bool bg = false;
+        public static string sb = null;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -178,16 +179,19 @@ namespace AGIT_131y_2._0
             label3.Text = stop;
             files = new string[1];
             files[0] = stop;
-            bg = false; 
+            bg = false;
+            sb = label3.Text;
+            button1.Text = "1";
+            button2.Text = "2";
             Play_sound();
         }
         public void Play_sound()
         {
-            string sb = label3.Text;
+           
             if (files.Length == 1)
             {
 
-                if (bg)
+                if ((bg) && (!timer1.Enabled))
                 {
                     textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
                     label3.Invoke(new Action(() => label3.Text = ""));
@@ -216,6 +220,12 @@ namespace AGIT_131y_2._0
                 }
 
                 textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
+                if (timer1.Enabled)
+                {
+                    button1.Invoke(new Action(() => button1.Text = "1"));
+                    button3.Invoke(new Action(() => button3.Text = ""));
+                    button2.Invoke(new Action(() => button2.Text = "2"));
+                }
             }
             else
             {
@@ -224,6 +234,9 @@ namespace AGIT_131y_2._0
                 {
                     label3.Invoke(new Action(() => label3.Text = ""));
                     button1.Invoke(new Action(() => button1.Enabled = false));
+                    button1.Invoke(new Action(() => button1.Text = ""));
+                    button3.Invoke(new Action(() => button3.Text = ""));
+                    button3.Invoke(new Action(() => button3.Enabled = false));
                     textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
 
 
@@ -372,10 +385,18 @@ namespace AGIT_131y_2._0
                     }
                 }
 
-                
+                button1.Invoke(new Action(() => button1.Text = "Воспроизвести"));
+                button3.Invoke(new Action(() => button3.Text = "В конец маршрута"));
+                if (timer1.Enabled)
+                {
+                    button1.Invoke(new Action(() => button1.Text = "1"));
+                    button3.Invoke(new Action(() => button3.Text = ""));
+                    button2.Invoke(new Action(() => button2.Text = "2"));
+                }
             }
             label3.Invoke(new Action(() => label3.Text = sb));
             button1.Invoke(new Action(() => button1.Enabled = true));
+            button3.Invoke(new Action(() => button3.Enabled = true));
             textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
             SP = null;
         }
@@ -411,7 +432,7 @@ namespace AGIT_131y_2._0
             {
                 button3_Click(sender, e);
             }
-            if ((key4 != 0) && (button3.Enabled))
+            if ((key4 != 0))
             {
                 if (SP != null)
                     SP.Stop();
@@ -514,6 +535,8 @@ namespace AGIT_131y_2._0
 
                 }
 
+                sb = label3.Text;
+
                 if (key != '+')
                 {
                     Thread tr = new Thread(new ThreadStart(Play_sound));
@@ -603,7 +626,7 @@ namespace AGIT_131y_2._0
                             label3.Text = f[0];
                         }
 
-
+                    sb = label3.Text;
                     }
                     Thread tr = new Thread(new ThreadStart(Play_sound));
                     tr.Start();
