@@ -22,3 +22,15 @@ F:\visual studio\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2
 F:\visual studio\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Form2.resources
 F:\visual studio\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Properties.Resources.resources
 F:\visual studio\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.csproj.GenerateResource.Cache
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\AGIT-131y 2.0.exe.config
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.exe
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.pdb
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\AGIT-131y 2.0.exe
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\AGIT-131y 2.0.pdb
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\System.Net.Http.dll
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\System.Net.Http.xml
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.csprojResolveAssemblyReference.cache
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Form1.resources
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Form2.resources
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Properties.Resources.resources
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.csproj.GenerateResource.Cache

@@ -183,13 +183,15 @@ namespace AGIT_131y_2._0
         }
         public void Play_sound()
         {
+            string sb = label3.Text;
             if (files.Length == 1)
             {
 
                 if (bg)
+                {
                     textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
-                   
-                
+                    label3.Invoke(new Action(() => label3.Text = ""));
+                }
                 string st;
                 try
                 {
@@ -217,16 +219,16 @@ namespace AGIT_131y_2._0
             }
             else
             {
-
+               
                 for (int i = 0; i < files.Length; i++)
                 {
+                    label3.Invoke(new Action(() => label3.Text = ""));
                     button1.Invoke(new Action(() => button1.Enabled = false));
                     textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
 
 
                     if (files[i] == "ОДЗ")
                     {
-                        //label3.Text = "следующая остановка " + files[i + 1];
                         SP = new SoundPlayer(Announcer.ODZ.path);
                         SP.Play();
                         Thread.Sleep(Announcer.ODZ.timeout);
@@ -234,131 +236,100 @@ namespace AGIT_131y_2._0
                     }
                     if (files[i] == "Конечная")
                     {
-                        //if (i == 1)
-                        //{
-                        //    label3.Text = files[i - 1] + " - конечная";
-                        //}
                         SP = new SoundPlayer(Announcer.End.path);
-                        SP.Play();
-                      
-                            Thread.Sleep(Announcer.End.timeout);
+                        SP.Play();                    
+                        Thread.Sleep(Announcer.End.timeout);
                         continue;
                     }
                     if (files[i] == "Напоминаем")
                     {
-
                         SP = new SoundPlayer(Announcer.Remember.path);
-                        SP.Play();
-                      
-                            Thread.Sleep(Announcer.Remember.timeout);
+                        SP.Play();         
+                        Thread.Sleep(Announcer.Remember.timeout);
                         continue;
                     }
                     if (files[i] == "Начало движения")
                     {
-
                         SP = new SoundPlayer(Announcer.Start_moution.path);
-                        SP.Play();
-                    
-                            Thread.Sleep(Announcer.Start_moution.timeout);
+                        SP.Play();      
+                        Thread.Sleep(Announcer.Start_moution.timeout);
                         continue;
                     }
                     if (files[i] == "Оплатив проезд")
                     {
-
                         SP = new SoundPlayer(Announcer.Pay.path);
-                        SP.Play();
-                       
-                            Thread.Sleep(Announcer.Pay.timeout);
+                        SP.Play();  
+                        Thread.Sleep(Announcer.Pay.timeout);
                         continue;
                     }
                     if (files[i] == "Напоминаем")
                     {
-
                         SP = new SoundPlayer(Announcer.Remember.path);
-                        SP.Play();
-                      
-                            Thread.Sleep(Announcer.Remember.timeout);
+                        SP.Play();      
+                        Thread.Sleep(Announcer.Remember.timeout);
                         continue;
                     }
                     if (files[i] == "Кнопка на поручне")
                     {
-
                         SP = new SoundPlayer(Announcer.Button.path);
-                        SP.Play();
-                       
-                            Thread.Sleep(Announcer.Button.timeout);
+                        SP.Play();     
+                        Thread.Sleep(Announcer.Button.timeout);
                         continue;
                     }
                     if (files[i] == "Остановка на выход")
                     {
-
                         SP = new SoundPlayer(Announcer.Stop_on_out.path);
-                        SP.Play();
-                      
-                            Thread.Sleep(Announcer.Stop_on_out.timeout);
+                        SP.Play();            
+                        Thread.Sleep(Announcer.Stop_on_out.timeout);
                         continue;
                     }
                     if (files[i] == "Перед выходом")
                     {
-
                         SP = new SoundPlayer(Announcer.Before_out.path);
                         SP.Play();
-                     
-                            Thread.Sleep(Announcer.Before_out.timeout);
+                        Thread.Sleep(Announcer.Before_out.timeout);
                         continue;
                     }
                     if (files[i] == "Посадка закончена")
                     {
-
                         SP = new SoundPlayer(Announcer.Entry_out.path);
-                        SP.Play();
-                     
-                            Thread.Sleep(Announcer.Entry_out.timeout);
+                        SP.Play();          
+                        Thread.Sleep(Announcer.Entry_out.timeout);
                         continue;
                     }
                     if (files[i] == "Проезжая часть")
                     {
-
                         SP = new SoundPlayer(Announcer.Route_part.path);
                         SP.Play();
-                    
-                            Thread.Sleep(Announcer.Route_part.timeout);
+                        Thread.Sleep(Announcer.Route_part.timeout);
                         continue;
                     }
                     if (files[i] == "Только для высадки")
                     {
-
                         SP = new SoundPlayer(Announcer.Only_out.path);
                         SP.Play();
-
                         Thread.Sleep(Announcer.Only_out.timeout);
                         continue;
                     }
                     if (files[i] == "Уступите")
                     {
-
                         SP = new SoundPlayer(Announcer.Give_in.path);
-                        SP.Play();
-                        
-                            Thread.Sleep(Announcer.Give_in.timeout);
+                        SP.Play();                        
+                        Thread.Sleep(Announcer.Give_in.timeout);
                         continue;
                     }
                     if (files[i] == "Штраф")
                     {
-
                         SP = new SoundPlayer(Announcer.Shtraf.path);
-                        SP.Play();
-                      
-                            Thread.Sleep(Announcer.Shtraf.timeout);
+                        SP.Play(); 
+                        Thread.Sleep(Announcer.Shtraf.timeout);
                         continue;
                     }
                     if (files[i] == "Реклама")
                     {
-
                         SP = new SoundPlayer(Announcer.Ad.path);
                         SP.Play();
-                     
-                            Thread.Sleep(Announcer.Ad.timeout);
+                        Thread.Sleep(Announcer.Ad.timeout);
                         continue;
                     }
                     if (files[i] == "Следует до")
@@ -372,35 +343,29 @@ namespace AGIT_131y_2._0
                     {
                         SP = new SoundPlayer(Announcer.Out.path);
                         SP.Play();
-                    
-                            Thread.Sleep(Announcer.Out.timeout);
+                        Thread.Sleep(Announcer.Out.timeout);
                         continue;
                     }
                     if (files[i] == "Билеты")
                     {
                         SP = new SoundPlayer(Announcer.Tickets.path);
                         SP.Play();
-                 
-                            Thread.Sleep(Announcer.Tickets.timeout);
+                        Thread.Sleep(Announcer.Tickets.timeout);
                         continue;
                     }
                     else
                     {
                         try
                         {
-
                             string p = "Sound\\" + label1.Text + "\\" + files[i] + ".wav";
                             SP = new SoundPlayer(p);
-                            SP.Play();
-                        
-                                Thread.Sleep(Announcer.timeout_default);
-
-                        
+                            SP.Play();                   
+                           Thread.Sleep(Announcer.timeout_default);
+  
                         }
                         catch (Exception e)
                         {
-                          
-                                Thread.Sleep(Announcer.timeout_default);
+                            Thread.Sleep(Announcer.timeout_default);
                             continue;
                         }
 
@@ -409,6 +374,7 @@ namespace AGIT_131y_2._0
 
                 
             }
+            label3.Invoke(new Action(() => label3.Text = sb));
             button1.Invoke(new Action(() => button1.Enabled = true));
             textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
             SP = null;
