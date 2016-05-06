@@ -49,6 +49,7 @@
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,6 +219,10 @@
             this.textBox1.Size = new System.Drawing.Size(31, 20);
             this.textBox1.TabIndex = 14;
             // 
+            // timer3
+            // 
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,6 +278,7 @@
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Timer timer3;
     }
 }
 

@@ -60,6 +60,7 @@ namespace AGIT_131y_2._0
         {
       
             timer2.Enabled = true;
+            timer3.Enabled = true;
             if (routers != null)
             {
                 routers.Close();
@@ -273,6 +274,9 @@ namespace AGIT_131y_2._0
                 }
                 catch (Exception ex)
                 {
+                    SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
+                    SP.Play();
+                    Thread.Sleep(320);
                     SP.Stop();
                 }
 
@@ -308,10 +312,20 @@ namespace AGIT_131y_2._0
                     }
                   if (find)
                     {
-                        SP = new SoundPlayer(announcer[find_pos].path);
-                        SP.Play();
-                        Thread.Sleep(announcer[find_pos].timeout);
-                        continue;
+                        try
+                        {
+                            SP = new SoundPlayer(announcer[find_pos].path);
+                            SP.Play();
+                            Thread.Sleep(announcer[find_pos].timeout);
+                            continue;
+                        }
+                        catch (Exception e)
+                        {
+                            SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
+                            SP.Play();
+                            Thread.Sleep(320);
+                            continue;
+                        }
                     }
                     else
                     {
@@ -325,7 +339,9 @@ namespace AGIT_131y_2._0
                         }
                         catch (Exception e)
                         {
-                            Thread.Sleep(Announcer.timeout_default);
+                            SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
+                            SP.Play();
+                            Thread.Sleep(320);
                             continue;
                         }
 
@@ -609,6 +625,18 @@ namespace AGIT_131y_2._0
         private void button4_Click(object sender, EventArgs e)
         {
             Active();
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            if (button1.Text == "")
+                button1.Enabled = false;
+            else
+                button1.Enabled = true;
+            if (button3.Text == "")
+                button3.Enabled = false;
+            else
+                button3.Enabled = true;
         }
     }
 }
