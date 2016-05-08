@@ -51,9 +51,6 @@ namespace AGIT_131y_2._0
             button3.Enabled = false;
             label6.Text = " ";
             Active();
-          
-
-
         }
 
         public void Active()
@@ -100,7 +97,8 @@ namespace AGIT_131y_2._0
                 }
                 catch (IOException e)
                 {
-
+                    MessageBox.Show("Файл files.cfg не доступен", "Ошибка файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             
                 StreamWriter route = new StreamWriter("files.cfg");
@@ -486,10 +484,8 @@ namespace AGIT_131y_2._0
                         label3.Text = "следующая остановка " + f[i + 1];
                     }
 
-                    if ((files[i] != "ОДЗ") && (files[i] != "Конечная") && (files[i] != "Напоминаем") &&
-                    (files[i] != "Кнопка на поручне") && (files[i] != "Остановка на выход") && (files[i] != "Перед выходом") && (files[i] != "Посадка закончена") && (files[i] != "Проезжая часть")
-                    && (files[i] != "Только для высадки") && (files[i] != "Уступите") && (files[i] != "Штраф") &&
-                    (files[i] != "Реклама") && (files[i] != "Следует до") && (files[i] != "При выходе") && (files[i] != "Билеты") && (i == 0))
+                    if ((files[i] != "ОДЗ") && (files[i] != "Конечная") && (files[i] != "Посадка закончена")
+                        && (i == 0))
 
                     {
                         label3.Text = f[0];
@@ -580,10 +576,8 @@ namespace AGIT_131y_2._0
                             label3.Text = "следующая остановка " + files[i + 1];
                         }
 
-                        if ((files[i] != "ОДЗ") && (files[i] != "Конечная") && (files[i] != "Напоминаем") &&
-                        (files[i] != "Кнопка на поручне") && (files[i] != "Остановка на выход") && (files[i] != "Перед выходом") && (files[i] != "Посадка закончена") && (files[i] != "Проезжая часть")
-                        && (files[i] != "Только для высадки") && (files[i] != "Уступите") && (files[i] != "Штраф") &&
-                        (files[i] != "Реклама") && (files[i] != "Следует до") && (files[i] != "При выходе") && (i == 0))
+                        if ((files[i] != "ОДЗ") && (files[i] != "Конечная")  && (files[i] != "Посадка закончена") 
+                        && (i == 0))
 
                         {
                             label3.Text = f[0];
