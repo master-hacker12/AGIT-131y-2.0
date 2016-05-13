@@ -71,11 +71,12 @@ namespace AGIT_131y_2._0
                 if (war != null)
                 {
                     label6.Text = "Изменение маршрутов:";
-                    label6.Text = label6.Text + '\n' + war;
+                    label6.Text += '\n' + war;
                     while (!warning.EndOfStream)
                     {
-                        label6.Text = label6.Text + '\n' + war;
                         war = warning.ReadLine();
+                        label6.Text = label6.Text + '\n' + war;
+                        
                     }
 
                 }
