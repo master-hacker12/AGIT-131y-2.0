@@ -363,6 +363,29 @@ namespace AGIT_131y_2._0
             SP = null;
         }
 
+        private string delete_slash(string str)
+        {
+            string result = str;
+            int proverka = 0;
+            bool flag = false;
+            for (int i = 0; i < result.Length; i++)
+            {
+                if ((result[i] == '\\') || (result[i] == '/'))
+                {
+                    proverka = i;
+                    flag = true;
+                }
+
+            }
+            if (flag)
+            {
+                    result = result.Substring(proverka + 1, str.Length - 1 - proverka);
+                    return result;
+            }
+            else
+                return str;
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -469,32 +492,32 @@ namespace AGIT_131y_2._0
                     files[i] = f[i];
                     if (files[i] == "ОДЗ")
                     {
-                        label3.Text = "следующая остановка " + f[i + 1];
+                        label3.Text = "следующая остановка " + delete_slash(f[i + 1]);
                         continue;
                     }
                     if (files[i] == "Конечная")
                     {
                         if (i == 1)
                         {
-                            label3.Text = files[i - 1] + " - конечная";
+                            label3.Text = delete_slash(files[i - 1]) + " - конечная";
                             continue;
                         }
                     }
                     if (files[i] == "Посадка закончена")
                     {
-                        label3.Text = "следующая остановка " + f[i + 1];
+                        label3.Text = "следующая остановка " + delete_slash(f[i + 1]);
                     }
 
                     if ((files[i] == "Техническая остановка") && ((files[0] != "ОДЗ")||(files[0] != "Посадка закончена")))
                     {
-                        label3.Text = files[0] + " - конечная";
+                        label3.Text = delete_slash(files[0]) + " - конечная";
                     }
 
                     if ((files[i] != "ОДЗ") && (files[i] != "Конечная") && (files[i] != "Посадка закончена")
                         && (i == 0))
 
                     {
-                        label3.Text = f[0];
+                        label3.Text = delete_slash(f[0]);
                     }
 
 
