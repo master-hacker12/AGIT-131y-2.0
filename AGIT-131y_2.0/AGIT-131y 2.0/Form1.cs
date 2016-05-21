@@ -513,6 +513,11 @@ namespace AGIT_131y_2._0
                         label3.Text = delete_slash(files[0]) + " - конечная";
                     }
 
+                    if ((files[i]=="По требованию")&&(i!=0))
+                    {
+                        label3.Text = label3.Text + " (по требованию)";
+                    }
+
                     if ((files[i] != "ОДЗ") && (files[i] != "Конечная") && (files[i] != "Посадка закончена")
                         && (i == 0))
 
