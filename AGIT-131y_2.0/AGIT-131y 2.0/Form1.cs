@@ -610,9 +610,10 @@ namespace AGIT_131y_2._0
                             label3.Text = delete_slash( f[0]);
                         }
 
-                    sb = label3.Text;
+                    
                     }
-                    Thread tr = new Thread(new ThreadStart(Play_sound));
+                sb = label3.Text;
+                Thread tr = new Thread(new ThreadStart(Play_sound));
                     tr.Start();              
             }
         }
