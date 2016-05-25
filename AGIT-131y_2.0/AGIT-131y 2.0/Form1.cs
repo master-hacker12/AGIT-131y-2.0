@@ -490,7 +490,7 @@ namespace AGIT_131y_2._0
                 for (int i = 0; i < count; i++)
                 {
                     files[i] = f[i];
-                    if (files[i] == "ОДЗ")
+                    if ((files[i] == "ОДЗ") || (files[i] == "Посадка закончена"))
                     {
                         label3.Text = "следующая остановка " + delete_slash(f[i + 1]);
                         continue;
@@ -503,11 +503,6 @@ namespace AGIT_131y_2._0
                             continue;
                         }
                     }
-                    if (files[i] == "Посадка закончена")
-                    {
-                        label3.Text = "следующая остановка " + delete_slash(f[i + 1]);
-                    }
-
                     if ((files[i] == "Техническая остановка") && ((files[0] != "ОДЗ")||(files[0] != "Посадка закончена")))
                     {
                         label3.Text = delete_slash(files[0]) + " - конечная";
@@ -543,8 +538,6 @@ namespace AGIT_131y_2._0
 
                 }
                 key = ' ';
-                //Play_sound();
-           
             }
 
         }
@@ -592,41 +585,35 @@ namespace AGIT_131y_2._0
                     for (int i = 0; i < count; i++)
                     {
                         files[i] = f[i];
-                        if (files[i] == "ОДЗ")
+                        if( (files[i] == "ОДЗ") || (files[i] == "Посадка закончена"))
                         {
-                            label3.Text = "следующая остановка " + f[i + 1];
+                            label3.Text = "следующая остановка " + delete_slash( f[i + 1]);
                             continue;
                         }
                         if (files[i] == "Конечная")
                         {
                             if (i == 1)
                             {
-                                label3.Text = files[i - 1] + " - конечная";
+                                label3.Text = delete_slash(files[i - 1]) + " - конечная";
                                 continue;
                             }
-                        }
-                        if (files[i] == "Посадка закончена")
-                        {
-                            label3.Text = "следующая остановка " + files[i + 1];
                         }
 
                     if ((files[i] == "Техническая остановка") && ((files[0] != "ОДЗ") || (files[0] != "Посадка закончена")))
                     {
-                        label3.Text = files[0] + " - конечная";
+                        label3.Text = delete_slash (files[0]) + " - конечная";
                     }
                     if ((files[i] != "ОДЗ") && (files[i] != "Конечная")  && (files[i] != "Посадка закончена") 
                         && (i == 0))
 
                         {
-                            label3.Text = f[0];
+                            label3.Text = delete_slash( f[0]);
                         }
 
                     sb = label3.Text;
                     }
                     Thread tr = new Thread(new ThreadStart(Play_sound));
-                    tr.Start();
-
-                
+                    tr.Start();              
             }
         }
 
