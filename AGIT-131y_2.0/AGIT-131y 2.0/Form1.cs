@@ -233,11 +233,11 @@ namespace AGIT_131y_2._0
             stop = stops.ReadLine();
             label2.Text = stop;
             stop = stops.ReadLine();
-            label3.Text = stop;
+            label3.Text = null;
+            sb = label3.Text;
             files = new string[1];
             files[0] = stop;
             bg = false;
-            sb = label3.Text;
             button1.Text = "1";
             button2.Text = "2";
             Play_sound();
@@ -262,7 +262,7 @@ namespace AGIT_131y_2._0
                     }
                     else
                     {
-                        st = "Sound\\" + label1.Text + "\\" + files[0] + ".wav";
+                        st = "Sound\\" + "Названия" + "\\" + files[0] + ".wav";
                     }
                     SP = new SoundPlayer(st);
                  
@@ -330,7 +330,7 @@ namespace AGIT_131y_2._0
                     {
                         try
                         {
-                            string p = "Sound\\" + label1.Text + "\\" + files[i] + ".wav";
+                            string p = "Sound\\" + "Названия" + "\\" + files[i] + ".wav";
                             SP = new SoundPlayer(p);
                             SP.Play();                   
                            Thread.Sleep(Announcer.timeout_default);
@@ -490,7 +490,7 @@ namespace AGIT_131y_2._0
                 for (int i = 0; i < count; i++)
                 {
                     files[i] = f[i];
-                    if ((files[i] == "ОДЗ") || (files[i] == "Посадка закончена"))
+                    if ((files[i] == "Отправление") || (files[i] == "Посадка закончена"))
                     {
                         label3.Text = "следующая остановка " + delete_slash(f[i + 1]);
                         continue;
@@ -503,7 +503,7 @@ namespace AGIT_131y_2._0
                             continue;
                         }
                     }
-                    if ((files[i] == "Техническая остановка") && ((files[0] != "ОДЗ")||(files[0] != "Посадка закончена")))
+                    if ((files[i] == "Техническая остановка") && ((files[0] != "Отправление") ||(files[0] != "Посадка закончена")))
                     {
                         label3.Text = delete_slash(files[0]) + " - конечная";
                     }
@@ -513,7 +513,7 @@ namespace AGIT_131y_2._0
                         label3.Text = label3.Text + " (по требованию)";
                     }
 
-                    if ((files[i] != "ОДЗ") && (files[i] != "Конечная") && (files[i] != "Посадка закончена")
+                    if ((files[i] != "Отправление") && (files[i] != "Конечная") && (files[i] != "Посадка закончена")
                         && (i == 0))
 
                     {
