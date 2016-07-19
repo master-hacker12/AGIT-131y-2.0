@@ -34,6 +34,8 @@ namespace AGIT_131y_2._0
         bool bg = false;
         public static string sb = null;
         Announcer[] announcer = null;
+        bool end = false;
+        string endstr = "";
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -43,12 +45,10 @@ namespace AGIT_131y_2._0
             textBox1.BackColor = Color.DimGray;
             textBox2.BackColor = Color.DimGray;
             textBox3.BackColor = Color.DimGray;
-            button1.Text = "1";
+            button1.Text = "";
             button2.Text = "2";
             button3.Text = "";
             button4.Text = "Обновить";
-            button1.Enabled = false;
-            button3.Enabled = false;
             label6.Text = " ";
             Active();
         }
@@ -174,10 +174,14 @@ namespace AGIT_131y_2._0
             label1.ForeColor = Properties.Settings.Default.Color1;
             label2.ForeColor = Properties.Settings.Default.Color2;
             label3.ForeColor = Properties.Settings.Default.Color3;
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            endstr = "";
+            end = false;
             textBox3.BackColor = Color.Red;
             timer1.Enabled = true;
             button1.Enabled = true;
@@ -241,6 +245,7 @@ namespace AGIT_131y_2._0
             button1.Text = "1";
             button2.Text = "2";
             Play_sound();
+          
         }
         public void Play_sound()
         {
@@ -360,6 +365,12 @@ namespace AGIT_131y_2._0
             button1.Invoke(new Action(() => button1.Enabled = true));
             button3.Invoke(new Action(() => button3.Enabled = true));
             textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
+            if ((end) && (endstr!=""))
+            {
+                textBox2.Invoke(new Action(() => textBox2.BackColor = Color.Lime));
+                label2.Invoke(new Action(() => label2.Text = endstr));
+            }
+            endstr = "";
             SP = null;
         }
 
@@ -430,6 +441,7 @@ namespace AGIT_131y_2._0
         private void button1_Click(object sender, EventArgs e)
         {
             bg = true;
+            end = false;
             button1.Text = "Воспроизвести";
             button2.Text = "Сменить маршрут";
             button3.Text = "В конец маршрута";
@@ -451,9 +463,11 @@ namespace AGIT_131y_2._0
             }
             if (stop == "----------")
             {
-                textBox2.BackColor = Color.Lime;
+                //textBox2.BackColor = Color.Lime;
+                end = true;
                 stop = stops.ReadLine();
-                label2.Text = stop;
+                endstr = stop;
+                //label2.Text = stop;
                 stop = stops.ReadLine();
                 if (stop == null)
                 {
