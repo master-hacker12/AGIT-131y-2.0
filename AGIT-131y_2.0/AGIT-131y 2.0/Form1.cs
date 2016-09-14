@@ -463,11 +463,9 @@ namespace AGIT_131y_2._0
             }
             if (stop == "----------")
             {
-                //textBox2.BackColor = Color.Lime;
                 end = true;
                 stop = stops.ReadLine();
                 endstr = stop;
-                //label2.Text = stop;
                 stop = stops.ReadLine();
                 if (stop == null)
                 {
@@ -549,6 +547,11 @@ namespace AGIT_131y_2._0
                     string st = "Sound\\Шаблоны\\ping.wav";
                     SoundPlayer SP1 = new SoundPlayer(st);
                     SP1.Play();
+                    if (end)
+                    {
+                        textBox2.BackColor = Color.Lime;
+                        label2.Text = endstr;
+                    }
 
                 }
                 key = ' ';
