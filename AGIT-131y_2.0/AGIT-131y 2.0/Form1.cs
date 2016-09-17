@@ -274,7 +274,25 @@ namespace AGIT_131y_2._0
 
                     SP.Play();
                     if (bg)
-                        Thread.Sleep(Announcer.timeout_default2);
+                    {
+                        bool find = false;
+                        int find_pos = -1;
+                        for (int j = 0; j < announcer.Length; j++)
+                        {
+                            if (files[0] == announcer[j].name)
+                            {
+                                find = true;
+                                find_pos = j;
+                                break;
+                            }
+                        }
+
+                        if (find)
+                           Thread.Sleep(announcer[find_pos].timeout);
+                        else
+                            Thread.Sleep(Announcer.timeout_default2);
+                    }
+                        
                 }
                 catch (Exception ex)
                 {
