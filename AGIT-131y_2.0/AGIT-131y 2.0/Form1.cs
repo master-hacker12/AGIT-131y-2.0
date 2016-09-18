@@ -11,6 +11,10 @@ using System.IO;
 using System.Threading;
 using System.Media;
 using System.Runtime.InteropServices;
+using Un4seen.Bass;
+using Un4seen.BassAsio;
+using Un4seen.BassWasapi;
+
 
 namespace AGIT_131y_2._0
 {
@@ -247,6 +251,19 @@ namespace AGIT_131y_2._0
             Play_sound();
           
         }
+
+        //public int strtoInt (string str)
+        //{
+        //    int q = -1;
+        //    for (int i =0;i<str.Length;i++)
+        //        if ((str[i]!='0') || (str[i]!=':') || (str[i]!='-'))
+        //        {
+        //            q = i;
+        //            break;
+        //        }
+
+        //}
+
         public void Play_sound()
         {
            
@@ -269,30 +286,38 @@ namespace AGIT_131y_2._0
                     {
                         st = "Sound\\" + "Названия" + "\\" + files[0] + ".wav";
                     }
-                    SP = new SoundPlayer(st);
-                 
+                    // SP = new SoundPlayer(st);
+                   
+                    int state = BassLike.Play(st, BassLike.Volume);
+                  
 
-                    SP.Play();
+                    //  SP.Play();
                     if (bg)
                     {
-                        bool find = false;
-                        int find_pos = -1;
-                        for (int j = 0; j < announcer.Length; j++)
-                        {
-                            if (files[0] == announcer[j].name)
-                            {
-                                find = true;
-                                find_pos = j;
-                                break;
-                            }
-                        }
+                        //bool find = false;
+                        //int find_pos = -1;
+                        //for (int j = 0; j < announcer.Length; j++)
+                        //{
+                        //    if (files[0] == announcer[j].name)
+                        //    {
+                        //        find = true;
+                        //        find_pos = j;
+                        //        break;
+                        //    }
+                        //}
 
-                        if (find)
-                           Thread.Sleep(announcer[find_pos].timeout);
+                        //if (find)
+                        //    Thread.Sleep(announcer[find_pos].timeout);
+                        //else
+                        //    Thread.Sleep(Announcer.timeout_default2);
+
+                       
+                        if (state != 0)
+                            Thread.Sleep((int)BassLike.GetTimeStream(BassLike.Stream)*1000);
                         else
-                            Thread.Sleep(Announcer.timeout_default2);
+                            throw new Exception("");
                     }
-                        
+
                 }
                 catch (Exception ex)
                 {
@@ -323,7 +348,7 @@ namespace AGIT_131y_2._0
                     textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
                     bool find = false;
                     int find_pos = -1;
-                   for (int j = 0;j<announcer.Length;j++)
+                    for (int j = 0; j < announcer.Length; j++)
                     {
                         if (files[i] == announcer[j].name)
                         {
@@ -332,42 +357,58 @@ namespace AGIT_131y_2._0
                             break;
                         }
                     }
-                  if (find)
+                    //if (find)
+                    //{
+                    //    try
+                    //    {
+                    //        SP = new SoundPlayer(announcer[find_pos].path);
+                    //        SP.Play();
+                    //        Thread.Sleep(announcer[find_pos].timeout);
+                    //        continue;
+                    //    }
+                    //    catch (Exception e)
+                    //    {
+                    //        SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
+                    //        SP.Play();
+                    //        Thread.Sleep(320);
+                    //        continue;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    try
                     {
-                        try
+                        string p;
+                        if (find)
+                        p = "Sound\\" + "Шаблоны" + "\\" + files[i] + ".wav";
+                        else
+                        p = "Sound\\" + "Названия" + "\\" + files[i] + ".wav";
+                        int state = BassLike.Play(p, BassLike.Volume);
+
+                        //SP = new SoundPlayer(p);
+                        // SP.Play();
+                        if (state != 0)
                         {
-                            SP = new SoundPlayer(announcer[find_pos].path);
-                            SP.Play();
-                            Thread.Sleep(announcer[find_pos].timeout);
-                            continue;
+                            int sl = (int)(BassLike.GetTimeStream(BassLike.Stream) * 1000);
+
+                            Thread.Sleep(sl);
                         }
-                        catch (Exception e)
-                        {
-                            SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
-                            SP.Play();
-                            Thread.Sleep(320);
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            string p = "Sound\\" + "Названия" + "\\" + files[i] + ".wav";
-                            SP = new SoundPlayer(p);
-                            SP.Play();                   
-                           Thread.Sleep(Announcer.timeout_default);
-  
-                        }
-                        catch (Exception e)
-                        {
-                            SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
-                            SP.Play();
-                            Thread.Sleep(320);
-                            continue;
-                        }
+                        else
+                            throw new Exception("");
+                        //Thread.Sleep(Announcer.timeout_default);
 
                     }
+                    catch (Exception e)
+                    {
+                        SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
+                        SP.Play();
+                        Thread.Sleep(320);
+                        continue;
+                    }
+
+                    //}
+
+
                 }
 
                 button1.Invoke(new Action(() => button1.Text = "Воспроизвести"));
