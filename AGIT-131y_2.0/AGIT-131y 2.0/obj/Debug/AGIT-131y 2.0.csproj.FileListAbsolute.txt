@@ -34,3 +34,5 @@ F:\visual studio\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\System.Net.
 F:\visual studio\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\System.Net.Http.xml
 F:\visual studio\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\Bass.Net.xml
 F:\visual studio\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\Bass.Net.dll
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\Bass.Net.dll
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\Bass.Net.xml

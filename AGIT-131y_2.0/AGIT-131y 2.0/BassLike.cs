@@ -60,11 +60,11 @@ namespace AGIT_131y_2._0
                 return 0;
         }
 
-        public static double GetTimeStream (int stream)
+        public static int GetTimeStream (int stream)
         {
             long TimeBytes = Bass.BASS_ChannelGetLength(stream);
             double Time = Bass.BASS_ChannelBytes2Seconds(stream, TimeBytes);
-            return Time;
+            return (int)(Time*1000);
         }
 
     }

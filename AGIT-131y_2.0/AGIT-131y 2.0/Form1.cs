@@ -252,17 +252,6 @@ namespace AGIT_131y_2._0
           
         }
 
-        //public int strtoInt (string str)
-        //{
-        //    int q = -1;
-        //    for (int i =0;i<str.Length;i++)
-        //        if ((str[i]!='0') || (str[i]!=':') || (str[i]!='-'))
-        //        {
-        //            q = i;
-        //            break;
-        //        }
-
-        //}
 
         public void Play_sound()
         {
@@ -289,7 +278,7 @@ namespace AGIT_131y_2._0
                     // SP = new SoundPlayer(st);
                    
                     int state = BassLike.Play(st, BassLike.Volume);
-                  
+                    int timeout = BassLike.GetTimeStream(BassLike.Stream);
 
                     //  SP.Play();
                     if (bg)
@@ -313,7 +302,7 @@ namespace AGIT_131y_2._0
 
                        
                         if (state != 0)
-                            Thread.Sleep((int)BassLike.GetTimeStream(BassLike.Stream)*1000);
+                        Thread.Sleep(timeout);
                         else
                             throw new Exception("");
                     }
@@ -389,7 +378,7 @@ namespace AGIT_131y_2._0
                         // SP.Play();
                         if (state != 0)
                         {
-                            int sl = (int)(BassLike.GetTimeStream(BassLike.Stream) * 1000);
+                            int sl = BassLike.GetTimeStream(BassLike.Stream);
 
                             Thread.Sleep(sl);
                         }
@@ -489,8 +478,9 @@ namespace AGIT_131y_2._0
             }
             if ((key4 != 0))
             {
-                if (SP != null)
-                    SP.Stop();
+                //if (SP != null)
+                //    SP.Stop();
+                BassLike.Stop();
                 key = '+';
                 button1_Click(sender, e);
             }
