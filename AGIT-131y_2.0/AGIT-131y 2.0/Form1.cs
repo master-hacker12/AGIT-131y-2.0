@@ -40,6 +40,7 @@ namespace AGIT_131y_2._0
         Announcer[] announcer = null;
         bool end = false;
         string endstr = "";
+        public static int ping = 0;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -178,12 +179,14 @@ namespace AGIT_131y_2._0
             label1.ForeColor = Properties.Settings.Default.Color1;
             label2.ForeColor = Properties.Settings.Default.Color2;
             label3.ForeColor = Properties.Settings.Default.Color3;
+            ping = Properties.Settings.Default.timeout;
 
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabel2.Text = "| Режим выбора маршрута";
             endstr = "";
             end = false;
             textBox3.BackColor = Color.Red;
@@ -255,6 +258,7 @@ namespace AGIT_131y_2._0
 
         public void Play_sound()
         {
+            toolStripStatusLabel1.Text = "Идет вопроизведение |";
            
             if (files.Length == 1)
             {
@@ -263,44 +267,16 @@ namespace AGIT_131y_2._0
                 {
                     textBox1.Invoke(new Action(() => textBox1.BackColor = Color.Lime));
                     label3.Invoke(new Action(() => label3.Text = ""));
+                    
                 }
                 string st;
                 try
-                {
-                    if (depo == "В депо")
-                    {
-                        st = "Sound\\" + depo + "\\" + files[0] + ".wav";
-                    }
-                    else
-                    {
-                        st = "Sound\\" + "Названия" + "\\" + files[0] + ".wav";
-                    }
-                    // SP = new SoundPlayer(st);
-                   
+                {                   
+                        st = "Sound\\" + "Названия" + "\\" + files[0] + ".wav";                   
                     int state = BassLike.Play(st, BassLike.Volume);
                     int timeout = BassLike.GetTimeStream(BassLike.Stream);
-
-                    //  SP.Play();
                     if (bg)
-                    {
-                        //bool find = false;
-                        //int find_pos = -1;
-                        //for (int j = 0; j < announcer.Length; j++)
-                        //{
-                        //    if (files[0] == announcer[j].name)
-                        //    {
-                        //        find = true;
-                        //        find_pos = j;
-                        //        break;
-                        //    }
-                        //}
-
-                        //if (find)
-                        //    Thread.Sleep(announcer[find_pos].timeout);
-                        //else
-                        //    Thread.Sleep(Announcer.timeout_default2);
-
-                       
+                    {                     
                         if (state != 0)
                         Thread.Sleep(timeout);
                         else
@@ -310,10 +286,17 @@ namespace AGIT_131y_2._0
                 }
                 catch (Exception ex)
                 {
-                    SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
-                    SP.Play();
-                    Thread.Sleep(320);
-                    SP.Stop();
+                    try
+                    {
+                        SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
+                        SP.Play();
+                        Thread.Sleep(320);
+                        SP.Stop();
+                    }
+                    catch (Exception exp)
+                    {
+
+                    }
                 }
 
                 textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
@@ -326,9 +309,9 @@ namespace AGIT_131y_2._0
             }
             else
             {
-               
                 for (int i = 0; i < files.Length; i++)
                 {
+                    toolStripStatusLabel1.Text = "Идет вопроизведение |";
                     label3.Invoke(new Action(() => label3.Text = ""));
                     button1.Invoke(new Action(() => button1.Enabled = false));
                     button1.Invoke(new Action(() => button1.Text = ""));
@@ -346,25 +329,6 @@ namespace AGIT_131y_2._0
                             break;
                         }
                     }
-                    //if (find)
-                    //{
-                    //    try
-                    //    {
-                    //        SP = new SoundPlayer(announcer[find_pos].path);
-                    //        SP.Play();
-                    //        Thread.Sleep(announcer[find_pos].timeout);
-                    //        continue;
-                    //    }
-                    //    catch (Exception e)
-                    //    {
-                    //        SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
-                    //        SP.Play();
-                    //        Thread.Sleep(320);
-                    //        continue;
-                    //    }
-                    //}
-                    //else
-                    //{
                     try
                     {
                         string p;
@@ -373,31 +337,28 @@ namespace AGIT_131y_2._0
                         else
                         p = "Sound\\" + "Названия" + "\\" + files[i] + ".wav";
                         int state = BassLike.Play(p, BassLike.Volume);
-
-                        //SP = new SoundPlayer(p);
-                        // SP.Play();
                         if (state != 0)
                         {
                             int sl = BassLike.GetTimeStream(BassLike.Stream);
-
-                            Thread.Sleep(sl);
+                            Thread.Sleep(sl+ping);
                         }
                         else
                             throw new Exception("");
-                        //Thread.Sleep(Announcer.timeout_default);
-
                     }
                     catch (Exception e)
                     {
-                        SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
-                        SP.Play();
-                        Thread.Sleep(320);
+                        try
+                        {
+                            SP = new SoundPlayer("Sound\\Шаблоны\\ping.wav");
+                            SP.Play();
+                            Thread.Sleep(320);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
                         continue;
                     }
-
-                    //}
-
-
                 }
 
                 button1.Invoke(new Action(() => button1.Text = "Воспроизвести"));
@@ -413,10 +374,13 @@ namespace AGIT_131y_2._0
             button1.Invoke(new Action(() => button1.Enabled = true));
             button3.Invoke(new Action(() => button3.Enabled = true));
             textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
+            toolStripStatusLabel1.Text = "  ";
+
             if ((end) && (endstr!=""))
             {
                 textBox2.Invoke(new Action(() => textBox2.BackColor = Color.Lime));
                 label2.Invoke(new Action(() => label2.Text = endstr));
+                
             }
             endstr = "";
             SP = null;
@@ -449,9 +413,13 @@ namespace AGIT_131y_2._0
         {
 
             if (textBox2.BackColor == Color.DimGray)
+            {
                 textBox2.BackColor = Color.Lime;
+            }
             else
+            {
                 textBox2.BackColor = Color.DimGray;
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -460,6 +428,15 @@ namespace AGIT_131y_2._0
             short key2 = GetAsyncKeyState(109);
             short key3 = GetAsyncKeyState(107);
             short key4 = GetAsyncKeyState(34);
+
+            if ((textBox2.BackColor == Color.Lime) && (!timer1.Enabled))
+            {
+                toolStripStatusLabel2.Text = "| Конечная остановка";
+            }
+            if ((textBox2.BackColor == Color.DimGray) && (!timer1.Enabled))
+            {
+                toolStripStatusLabel2.Text = " ";
+            }
 
             if ((key1 != 0) && (button1.Enabled))
             {
@@ -478,8 +455,6 @@ namespace AGIT_131y_2._0
             }
             if ((key4 != 0))
             {
-                //if (SP != null)
-                //    SP.Stop();
                 BassLike.Stop();
                 key = '+';
                 button1_Click(sender, e);
@@ -551,12 +526,12 @@ namespace AGIT_131y_2._0
                 for (int i = 0; i < count; i++)
                 {
                     files[i] = f[i];
-                    if ((files[i] == "Отправление") || (files[i] == "Посадка закончена"))
+                    if (((delete_slash(files[i]) == "Отправление") || (delete_slash(files[i]) == "Посадка закончена")) && (i!=count-1))
                     {
                         label3.Text = "следующая остановка " + delete_slash(f[i + 1]);
                         continue;
                     }
-                    if (files[i] == "Конечная")
+                    if (delete_slash(files[i]) == "Конечная")
                     {
                         if (i == 1)
                         {
@@ -564,17 +539,17 @@ namespace AGIT_131y_2._0
                             continue;
                         }
                     }
-                    if ((files[i] == "Техническая остановка") && ((files[0] != "Отправление") ||(files[0] != "Посадка закончена")))
+                    if ((delete_slash(files[i]) == "Техническая остановка") && ((delete_slash(files[0]) != "Отправление") ||(delete_slash(files[0]) != "Посадка закончена")))
                     {
                         label3.Text = delete_slash(files[0]) + " - конечная";
                     }
 
-                    if ((files[i]=="По требованию")&&(i!=0))
+                    if ((delete_slash(files[i])=="По требованию")&&(i!=0))
                     {
                         label3.Text = label3.Text + " (по требованию)";
                     }
 
-                    if ((files[i] != "Отправление") && (files[i] != "Конечная") && (files[i] != "Посадка закончена")
+                    if ((delete_slash(files[i]) != "Отправление") && (delete_slash(files[i]) != "Конечная") && (delete_slash(files[i]) != "Посадка закончена")
                         && (i == 0))
 
                     {
@@ -593,13 +568,20 @@ namespace AGIT_131y_2._0
                 }
                 else
                 {
-                    string st = "Sound\\Шаблоны\\ping.wav";
-                    SoundPlayer SP1 = new SoundPlayer(st);
-                    SP1.Play();
-                    if (end)
+                    try
                     {
-                        textBox2.BackColor = Color.Lime;
-                        label2.Text = endstr;
+                        string st = "Sound\\Шаблоны\\ping.wav";
+                        SoundPlayer SP1 = new SoundPlayer(st);
+                        SP1.Play();
+                        if (end)
+                        {
+                            textBox2.BackColor = Color.Lime;
+                            label2.Text = endstr;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
                     }
 
                 }
@@ -692,6 +674,7 @@ namespace AGIT_131y_2._0
             Properties.Settings.Default.Color1 = label1.ForeColor;
             Properties.Settings.Default.Color2 = label2.ForeColor;
             Properties.Settings.Default.Color3 = label3.ForeColor;
+            Properties.Settings.Default.timeout = ping;
             //сохранение настроек
             Properties.Settings.Default.Save();
         }
@@ -704,7 +687,6 @@ namespace AGIT_131y_2._0
         private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2 f2 = new Form2();
-
             f2.Visible = true;
         }
 

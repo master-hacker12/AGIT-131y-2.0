@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -39,6 +40,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // button1
@@ -103,7 +109,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(264, 130);
+            this.button7.Location = new System.Drawing.Point(264, 151);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(113, 23);
             this.button7.TabIndex = 6;
@@ -113,7 +119,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(396, 130);
+            this.button8.Location = new System.Drawing.Point(396, 153);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(113, 23);
             this.button8.TabIndex = 7;
@@ -151,12 +157,57 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Остановка";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(26, 132);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(151, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Задержка воспроизведения";
+            // 
+            // hScrollBar1
+            // 
+            this.hScrollBar1.LargeChange = 100;
+            this.hScrollBar1.Location = new System.Drawing.Point(264, 123);
+            this.hScrollBar1.Maximum = 5000;
+            this.hScrollBar1.Name = "hScrollBar1";
+            this.hScrollBar1.Size = new System.Drawing.Size(254, 22);
+            this.hScrollBar1.TabIndex = 12;
+            this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(538, 122);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(75, 20);
+            this.textBox1.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(623, 126);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "с.";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(570, 205);
+            this.ClientSize = new System.Drawing.Size(745, 198);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.hScrollBar1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -189,5 +240,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.HScrollBar hScrollBar1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

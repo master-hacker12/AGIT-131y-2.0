@@ -11,7 +11,5 @@ namespace AGIT_131y_2._0
         public  string name;
         public  string path;
         public  int timeout;
-        public static int timeout_default = 5200;
-        public static int timeout_default2 = 9000;
     }
 }

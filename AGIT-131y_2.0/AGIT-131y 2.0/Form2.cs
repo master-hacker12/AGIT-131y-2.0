@@ -15,9 +15,12 @@ namespace AGIT_131y_2._0
         public Form2()
         {
             InitializeComponent();
+            timer1.Enabled = true;
+            textBox1.Text = "0";
         }
         ColorDialog colorDialog1 = new ColorDialog();
         FontDialog fontDialog1 = new FontDialog();
+        
         private void Form2_Load(object sender, EventArgs e)
         {
            
@@ -28,6 +31,8 @@ namespace AGIT_131y_2._0
             label1.ForeColor = Properties.Settings.Default.Color1;
             label2.ForeColor = Properties.Settings.Default.Color2;
             label3.ForeColor = Properties.Settings.Default.Color3;
+            textBox1.Text = Properties.Settings.Default.timeout.ToString();
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -38,6 +43,7 @@ namespace AGIT_131y_2._0
             Properties.Settings.Default.Color1 = label1.ForeColor;
             Properties.Settings.Default.Color2 = label2.ForeColor;
             Properties.Settings.Default.Color3 = label3.ForeColor;
+            Properties.Settings.Default.timeout = Convert.ToInt32(textBox1.Text);
             Properties.Settings.Default.Save();
             this.Close();
         }
@@ -101,6 +107,19 @@ namespace AGIT_131y_2._0
             {
                 label3.ForeColor = colorDialog1.Color;
             }
+        }
+
+        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            textBox1.Text = hScrollBar1.Value.ToString();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+                textBox1.Text = "0";
+            hScrollBar1.Value = Convert.ToInt32(textBox1.Text);
+           
         }
     }
 }
