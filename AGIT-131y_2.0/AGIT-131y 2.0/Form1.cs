@@ -280,11 +280,11 @@ namespace AGIT_131y_2._0
                         if (state != 0)
                         Thread.Sleep(timeout);
                         else
-                            throw new Exception("");
+                            throw new FileNotFoundException("");
                     }
 
                 }
-                catch (Exception ex)
+                catch (FileNotFoundException ex)
                 {
                     try
                     {
@@ -298,6 +298,12 @@ namespace AGIT_131y_2._0
 
                     }
                 }
+                catch(TypeInitializationException ex)
+                {
+                    MessageBox.Show("Возможно отстутсвует библиотека bass.dll. Скачайте bass.dll с официального сайта и скопируйте в C:\\windows\\system32", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 
+                }
+                
 
                 textBox1.Invoke(new Action(() => textBox1.BackColor = Color.DimGray));
                 if (timer1.Enabled)
@@ -343,9 +349,9 @@ namespace AGIT_131y_2._0
                             Thread.Sleep(sl+ping);
                         }
                         else
-                            throw new Exception("");
+                            throw new FileNotFoundException("");
                     }
-                    catch (Exception e)
+                    catch (FileNotFoundException e)
                     {
                         try
                         {
@@ -358,6 +364,13 @@ namespace AGIT_131y_2._0
 
                         }
                         continue;
+                    }
+
+                    catch (TypeInitializationException ex)
+                    {
+                        MessageBox.Show("Возможно отстутсвует библиотека bass.dll. Скачайте bass.dll с официального сайта и скопируйте в C:\\windows\\system32", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
+
                     }
                 }
 
