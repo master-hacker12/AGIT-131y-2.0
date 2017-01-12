@@ -133,20 +133,12 @@ namespace AGIT_131y_2._0
                 if (count == 0)
                     throw new ArgumentException("Шаблоны не найдены");
                 announcer = new Announcer[count-1];
-                int j = 0;
                 for (int i = 0; i<announcer.Length;i++)
                 {
                     announcer[i] = new Announcer();
-                    while (templsound[0]!="---")
-                    {
-                        j++;
-                    }
-                    j++;
-                    announcer[i].name = templsound[j];
-                    announcer[i].path = "Sound\\Шаблоны\\" + templsound[j] + ".wav";
-                    j++;
-                    announcer[i].timeout = Convert.ToInt32(templsound[j]);
-                    j++;
+                    
+                    announcer[i].name = templsound[i];
+                    announcer[i].path = "Sound\\Шаблоны\\" + templsound[i] + ".wav";
                 }
             }
             catch (ArgumentNullException)
@@ -345,7 +337,8 @@ namespace AGIT_131y_2._0
                         int state = BassLike.Play(p, BassLike.Volume);
                         if (state != 0)
                         {
-                            int sl = BassLike.GetTimeStream(BassLike.Stream);
+
+                            int sl = BassLike.GetTimeStream(BassLike.Stream);                            
                             Thread.Sleep(sl+ping);
                         }
                         else
@@ -539,9 +532,21 @@ namespace AGIT_131y_2._0
                 for (int i = 0; i < count; i++)
                 {
                     files[i] = f[i];
-                    if (((delete_slash(files[i]) == "Отправление") || (delete_slash(files[i]) == "Посадка закончена")) && (i!=count-1))
+                    if (((delete_slash(files[i]) == "Отправление") && (i!=count-1)))
                     {
                         label3.Text = "следующая остановка " + delete_slash(f[i + 1]);
+                        continue;
+                    }
+                    if (( (delete_slash(files[i]) == "Посадка закончена")) && (i != count - 1)  )
+                    {
+                        try
+                        {
+                            label3.Text = "следующая остановка " + delete_slash(f[i + 2]);
+                        }
+                        catch(Exception exp)
+                        {
+                            label3.Text = "Ошибка файла";
+                        }
                         continue;
                     }
                     if (delete_slash(files[i]) == "Конечная")

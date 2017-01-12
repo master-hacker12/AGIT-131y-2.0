@@ -10,6 +10,5 @@ namespace AGIT_131y_2._0
     {
         public  string name;
         public  string path;
-        public  int timeout;
     }
 }

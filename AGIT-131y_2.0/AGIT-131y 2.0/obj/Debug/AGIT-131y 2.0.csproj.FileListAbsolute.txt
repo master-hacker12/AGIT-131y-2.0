@@ -12,3 +12,17 @@ D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Pro
 D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.csproj.GenerateResource.Cache
 D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.exe
 D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.pdb
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\AGIT-131y 2.0.exe.config
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.exe
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.pdb
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\AGIT-131y 2.0.exe
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\AGIT-131y 2.0.pdb
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\Bass.Net.dll
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\System.Net.Http.dll
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\Bass.Net.xml
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\System.Net.Http.xml
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.csprojResolveAssemblyReference.cache
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Form1.resources
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Form2.resources
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Properties.Resources.resources
+F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.csproj.GenerateResource.Cache
