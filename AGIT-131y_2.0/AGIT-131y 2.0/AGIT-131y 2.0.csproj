@@ -134,6 +134,7 @@
     <Content Include="AGIT-131y.ico" />
     <Content Include="bass.dll">
       <CustomToolNamespace>Bass</CustomToolNamespace>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Bass.Net.xml" />
   </ItemGroup>

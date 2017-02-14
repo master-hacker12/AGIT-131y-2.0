@@ -41,6 +41,7 @@ namespace AGIT_131y_2._0
         bool end = false;
         string endstr = "";
         public static int ping = 0;
+        public bool condition = false;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -55,6 +56,7 @@ namespace AGIT_131y_2._0
             button3.Text = "";
             button4.Text = "Обновить";
             label6.Text = " ";
+            toolStripStatusLabel3.Text = "";
             Active();
         }
 
@@ -127,7 +129,6 @@ namespace AGIT_131y_2._0
                 int count = 0;
                 for (int i = 0;i<templsound.Length;i++)
                 {
-                    if (templsound[i] == "---")
                         count++;
                 }
                 if (count == 0)
@@ -269,10 +270,16 @@ namespace AGIT_131y_2._0
                     int timeout = BassLike.GetTimeStream(BassLike.Stream);
                     if (bg)
                     {                     
-                        if (state != 0)
-                        Thread.Sleep(timeout);
-                        else
+                        if (state == 0)
                             throw new FileNotFoundException("");
+                        else
+                            if (state ==-1)
+                        {
+                            MessageBox.Show("Возможно отстутсвует библиотека bass.dll. Скачайте bass.dll с официального сайта и скопируйте в C:\\windows\\system32", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                            Thread.Sleep(timeout);
+
                     }
 
                 }
@@ -434,7 +441,7 @@ namespace AGIT_131y_2._0
             short key2 = GetAsyncKeyState(109);
             short key3 = GetAsyncKeyState(107);
             short key4 = GetAsyncKeyState(34);
-
+            toolStripStatusLabel3.Text ="|||    " + NowTime();
             if ((textBox2.BackColor == Color.Lime) && (!timer1.Enabled))
             {
                 toolStripStatusLabel2.Text = "| Конечная остановка";
@@ -466,6 +473,11 @@ namespace AGIT_131y_2._0
                 button1_Click(sender, e);
             }
 
+        }
+
+         public string NowTime() // Текущая дата и время
+        {
+            return DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -549,21 +561,20 @@ namespace AGIT_131y_2._0
                         }
                         continue;
                     }
-                    if (delete_slash(files[i]) == "Конечная")
+                    if ((delete_slash(files[i]) == "Конечная") && (i == 1))
                     {
-                        if (i == 1)
-                        {
+                        
                             label3.Text = delete_slash(files[i - 1]) + " - конечная";
                             continue;
-                        }
                     }
                     if ((delete_slash(files[i]) == "Техническая остановка") && ((delete_slash(files[0]) != "Отправление") ||(delete_slash(files[0]) != "Посадка закончена")))
                     {
                         label3.Text = delete_slash(files[0]) + " - конечная";
                     }
 
-                    if ((delete_slash(files[i])=="По требованию")&&(i!=0))
+                    if ((delete_slash(files[i])=="По требованию")&&(i!=0) && (!condition))
                     {
+                        condition = true;
                         label3.Text = label3.Text + " (по требованию)";
                     }
 
@@ -578,7 +589,7 @@ namespace AGIT_131y_2._0
                 }
 
                 sb = label3.Text;
-
+                condition = false;
                 if (key != '+')
                 {
                     Thread tr = new Thread(new ThreadStart(Play_sound));

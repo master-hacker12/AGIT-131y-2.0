@@ -57,7 +57,7 @@ namespace AGIT_131y_2._0
                     return 0;
             }
             else
-                return 0;
+                return -1;
         }
 
         public static int GetTimeStream (int stream)
