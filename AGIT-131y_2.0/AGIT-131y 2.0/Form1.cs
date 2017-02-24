@@ -64,6 +64,16 @@ namespace AGIT_131y_2._0
         public void Active()
         {
       
+            if (!File.Exists("C:\\Windows\\System32\\bass.dll"))
+            {
+                MessageBox.Show("Возможно отстутсвует библиотека bass.dll. Скачайте bass.dll с официального сайта и скопируйте в C:\\windows\\system32", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!File.Exists("C:\\Windows\\System32\\Bass.Net.dll"))
+            {
+                MessageBox.Show("Возможно отстутсвует библиотека Bass.Net.dll. Cкопируйте Bass.Net.dll в C:\\windows\\system32", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             timer2.Enabled = true;
             timer3.Enabled = true;
             if (routers != null)
