@@ -43,6 +43,7 @@ namespace AGIT_131y_2._0
         public static int ping = 0;
         public bool condition = false;
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
             label1.Text = null;
@@ -561,11 +562,20 @@ namespace AGIT_131y_2._0
                         }
                         continue;
                     }
-                    if ((delete_slash(files[i]) == "Конечная") && (i == 1))
+                    if ((delete_slash(files[i]) == "Конечная") )
                     {
-                        
+
+                        if (i == 1)
+                        {
+
                             label3.Text = delete_slash(files[i - 1]) + " - конечная";
                             continue;
+                        }
+                        if (i > 1)
+                        {
+                            label3.Text += " - конечная";
+                            continue;
+                        }
                     }
                     if ((delete_slash(files[i]) == "Техническая остановка") && ((delete_slash(files[0]) != "Отправление") ||(delete_slash(files[0]) != "Посадка закончена")))
                     {
@@ -587,8 +597,21 @@ namespace AGIT_131y_2._0
 
 
                 }
+                if (label3.Size.Width > this.Size.Width - 100)
+                {
+
+                    String space = new String(' ', label3.Text.Length+80);
+                    space += label3.Text;
+                    label3.Text = space;
+
+                    timer4.Enabled = true;
+                }
+                else
+                    timer4.Enabled = false;
+
 
                 sb = label3.Text;
+
                 condition = false;
                 if (key != '+')
                 {
@@ -617,6 +640,7 @@ namespace AGIT_131y_2._0
                 key = ' ';
             }
 
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -674,6 +698,12 @@ namespace AGIT_131y_2._0
                                 label3.Text = delete_slash(files[i - 1]) + " - конечная";
                                 continue;
                             }
+                         
+                            if (i>1)
+                        {
+                            label3.Text +=  " - конечная";
+                            continue;
+                        }
                         }
 
                     if ((files[i] == "Техническая остановка") && ((files[0] != "ОДЗ") || (files[0] != "Посадка закончена")))
@@ -734,6 +764,20 @@ namespace AGIT_131y_2._0
                 button3.Enabled = false;
             else
                 button3.Enabled = true;
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            if (textBox1.BackColor != Color.Lime)
+            {
+                String str = label3.Text;
+                string s = str.Substring(0, 1);
+                str = str.Substring(1, str.Length - 1);
+                str += s;
+
+                label3.Text = str;
+            }
+            
         }
     }
 }
