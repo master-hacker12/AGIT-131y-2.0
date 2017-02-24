@@ -66,12 +66,12 @@ namespace AGIT_131y_2._0
       
             if (!File.Exists("C:\\Windows\\System32\\bass.dll"))
             {
-                MessageBox.Show("Возможно отстутсвует библиотека bass.dll. Скачайте bass.dll с официального сайта и скопируйте в C:\\windows\\system32", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Возможно отстутсвует библиотека bass.dll. Скачайте bass.dll с официального сайта, скопируйте в C:\\windows\\system32 и перезапустите программу", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!File.Exists("C:\\Windows\\System32\\Bass.Net.dll"))
             {
-                MessageBox.Show("Возможно отстутсвует библиотека Bass.Net.dll. Cкопируйте Bass.Net.dll в C:\\windows\\system32", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Возможно отстутсвует библиотека Bass.Net.dll. Cкопируйте Bass.Net.dll в C:\\windows\\system32 и перезапустите программу", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             timer2.Enabled = true;
