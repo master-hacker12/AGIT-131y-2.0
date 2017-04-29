@@ -65,16 +65,6 @@ namespace AGIT_131y_2._0
         public void Active()
         {
       
-            if (!File.Exists("C:\\Windows\\System32\\bass.dll"))
-            {
-                MessageBox.Show("Возможно отстутсвует библиотека bass.dll. Скачайте bass.dll с официального сайта, скопируйте в C:\\windows\\system32 и перезапустите программу", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (!File.Exists("C:\\Windows\\System32\\Bass.Net.dll"))
-            {
-                MessageBox.Show("Возможно отстутсвует библиотека Bass.Net.dll. Cкопируйте Bass.Net.dll в C:\\windows\\system32 и перезапустите программу", "Ошибка воспроизведения", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             timer2.Enabled = true;
             timer3.Enabled = true;
             if (routers != null)
@@ -501,6 +491,7 @@ namespace AGIT_131y_2._0
 
         private void button1_Click(object sender, EventArgs e)
         {
+            timer4.Enabled = true;
             bg = true;
             end = false;
             button1.Text = "Воспроизвести";
@@ -788,12 +779,20 @@ namespace AGIT_131y_2._0
         {
             if (textBox1.BackColor != Color.Lime)
             {
-                String str = label3.Text;
-                string s = str.Substring(0, 1);
-                str = str.Substring(1, str.Length - 1);
-                str += s;
+                try
+                {
+                    String str = label3.Text;
+                    string s = str.Substring(0, 1);
+                    str = str.Substring(1, str.Length - 1);
+                    str += s;
 
-                label3.Text = str;
+                    label3.Text = str;
+                }
+                catch (ArgumentOutOfRangeException eee)
+                {
+                    timer4.Enabled = false;
+                    return;
+                }
             }
             
         }
