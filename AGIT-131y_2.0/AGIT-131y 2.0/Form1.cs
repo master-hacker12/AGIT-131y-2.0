@@ -42,7 +42,6 @@ namespace AGIT_131y_2._0
         string endstr = "";
         public static int ping = 0;
         public bool condition = false;
-        public bool skip = false;
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -343,8 +342,7 @@ namespace AGIT_131y_2._0
                         p = "Sound\\" + "Шаблоны" + "\\" + files[i] + ".wav";
                         else
                         p = "Sound\\" + "Названия" + "\\" + files[i] + ".wav";
-                        if (!skip)
-                        {
+
                             int state = BassLike.Play(p, BassLike.Volume);
                             if (state != 0)
                             {
@@ -354,7 +352,7 @@ namespace AGIT_131y_2._0
                             }
                             else
                                 throw new FileNotFoundException("");
-                        }
+                   
                     }
                     catch (FileNotFoundException e)
                     {
@@ -461,24 +459,21 @@ namespace AGIT_131y_2._0
                 if (SP!=null)
                 SP.Stop();
                 key = '*';
-                skip = false;
                 button1_Click(sender, e);
             }
             if ((key2 != 0) && (button2.Enabled))
             {
-                skip = false;
+
                 button2_Click(sender, e);
             }
             if ((key3 != 0) && (button3.Enabled))
             {
-                skip = false;
                 button3_Click(sender, e);
             }
             if ((key4 != 0) && (stops!=null)  && (routers!=null))
             {
                 BassLike.Stop();
                 key = '+';
-                skip = true;
                 button1_Click(sender, e);
             }
 
