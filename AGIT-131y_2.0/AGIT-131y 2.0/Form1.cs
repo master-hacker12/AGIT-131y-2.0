@@ -42,6 +42,7 @@ namespace AGIT_131y_2._0
         string endstr = "";
         public static int ping = 0;
         public bool condition = false;
+        static bool depate = false;
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -134,7 +135,7 @@ namespace AGIT_131y_2._0
                 }
                 if (count == 0)
                     throw new ArgumentException("Шаблоны не найдены");
-                announcer = new Announcer[count-1];
+                announcer = new Announcer[count];
                 for (int i = 0; i<announcer.Length;i++)
                 {
                     announcer[i] = new Announcer();
@@ -546,12 +547,14 @@ namespace AGIT_131y_2._0
                 files = null;
                 files = new string[count];
 
+                depate = false;
                 for (int i = 0; i < count; i++)
                 {
                     files[i] = f[i];
                     if (((delete_slash(files[i]) == "Отправление") && (i!=count-1)))
                     {
                         label3.Text = "следующая остановка " + delete_slash(f[i + 1]);
+                        depate = true;
                         continue;
                     }
                     if (( (delete_slash(files[i]) == "Посадка закончена")) && (i != count - 1)  )
@@ -592,7 +595,14 @@ namespace AGIT_131y_2._0
                         label3.Text = label3.Text + " (по требованию)";
                     }
 
-                    if ((delete_slash(files[i]) != "Отправление") && (delete_slash(files[i]) != "Конечная") && (delete_slash(files[i]) != "Посадка закончена")
+                    if (((delete_slash(files[i]) == "Следующая остановка") && (i != count - 1) && (!depate)))
+                    {
+                        label3.Text =  delete_slash(f[i + 1]);
+                        depate = true;
+                        continue;
+                    }
+
+                        if ((delete_slash(files[i]) != "Отправление") && (delete_slash(files[i]) != "Конечная") && (delete_slash(files[i]) != "Посадка закончена")
                         && (i == 0))
 
                     {
