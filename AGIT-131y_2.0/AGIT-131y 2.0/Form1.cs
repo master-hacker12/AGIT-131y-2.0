@@ -378,6 +378,7 @@ namespace AGIT_131y_2._0
                     }
                 }
 
+
                 button1.Invoke(new Action(() => button1.Text = "Воспроизвести"));
                 button3.Invoke(new Action(() => button3.Text = "В конец маршрута"));
                 if (timer1.Enabled)
@@ -405,25 +406,15 @@ namespace AGIT_131y_2._0
 
         private string delete_slash(string str)
         {
-            string result = str;
-            int proverka = 0;
-            bool flag = false;
-            for (int i = 0; i < result.Length; i++)
+            string[] result = str.Split('\\', '/');
+            try
             {
-                if ((result[i] == '\\') || (result[i] == '/'))
-                {
-                    proverka = i;
-                    flag = true;
-                }
-
+                return result[result.Length - 1];
             }
-            if (flag)
+            catch
             {
-                    result = result.Substring(proverka + 1, str.Length - 1 - proverka);
-                    return result;
-            }
-            else
                 return str;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -546,7 +537,6 @@ namespace AGIT_131y_2._0
                 }
                 files = null;
                 files = new string[count];
-
                 depate = false;
                 for (int i = 0; i < count; i++)
                 {
@@ -584,9 +574,11 @@ namespace AGIT_131y_2._0
                             continue;
                         }
                     }
+                 
                     if ((delete_slash(files[i]) == "Техническая остановка") && ((delete_slash(files[0]) != "Отправление") ||(delete_slash(files[0]) != "Посадка закончена")))
                     {
                         label3.Text = delete_slash(files[0]) + " - конечная";
+
                     }
 
                     if ((delete_slash(files[i])=="По требованию")&&(i!=0) && (!condition))
