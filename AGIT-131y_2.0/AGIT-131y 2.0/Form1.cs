@@ -436,6 +436,10 @@ namespace AGIT_131y_2._0
             short key2 = GetAsyncKeyState(109);
             short key3 = GetAsyncKeyState(107);
             short key4 = GetAsyncKeyState(34);
+            short key5 = GetAsyncKeyState(36);
+            short key6 = GetAsyncKeyState(33);
+            short key7 = GetAsyncKeyState(35);
+
             toolStripStatusLabel3.Text ="|||    " + NowTime();
             if ((textBox2.BackColor == Color.Lime) && (!timer1.Enabled))
             {
@@ -446,19 +450,19 @@ namespace AGIT_131y_2._0
                 toolStripStatusLabel2.Text = " ";
             }
 
-            if ((key1 != 0) && (button1.Enabled))
+            if (((key1 != 0) || (key5 != 0)) && (button1.Enabled))
             {
                 if (SP!=null)
                 SP.Stop();
                 key = '*';
                 button1_Click(sender, e);
             }
-            if ((key2 != 0) && (button2.Enabled))
+            if (((key2 != 0) || (key6 != 0)) && (button2.Enabled))
             {
 
                 button2_Click(sender, e);
             }
-            if ((key3 != 0) && (button3.Enabled))
+            if (((key3 != 0) || (key7 != 0)) && (button3.Enabled))
             {
                 button3_Click(sender, e);
             }

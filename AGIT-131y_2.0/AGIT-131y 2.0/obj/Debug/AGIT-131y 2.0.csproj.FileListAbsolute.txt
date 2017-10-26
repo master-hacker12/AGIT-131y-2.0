@@ -22,3 +22,4 @@ F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT_131y_2._0.Pro
 F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.csproj.GenerateResource.Cache
 F:\GitHub\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\bass.dll
 D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\bin\Debug\bass.dll
+D:\Github\AGIT-131y-2.0\AGIT-131y_2.0\AGIT-131y 2.0\obj\Debug\AGIT-131y 2.0.csproj.CoreCompileInputs.cache
