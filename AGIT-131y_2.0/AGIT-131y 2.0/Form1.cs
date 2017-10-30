@@ -436,9 +436,9 @@ namespace AGIT_131y_2._0
             short key2 = GetAsyncKeyState(109);
             short key3 = GetAsyncKeyState(107);
             short key4 = GetAsyncKeyState(34);
-            short key5 = GetAsyncKeyState(36);
-            short key6 = GetAsyncKeyState(33);
-            short key7 = GetAsyncKeyState(35);
+            short key5 = GetAsyncKeyState(117);
+            short key6 = GetAsyncKeyState(118);
+            short key7 = GetAsyncKeyState(119);
 
             toolStripStatusLabel3.Text ="|||    " + NowTime();
             if ((textBox2.BackColor == Color.Lime) && (!timer1.Enabled))
